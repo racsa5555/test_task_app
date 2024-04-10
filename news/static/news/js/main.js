@@ -6,7 +6,6 @@ async function loadNews() {
   loading = true;
   const response = await fetch(`http://127.0.0.1:8000/news/load_more/?page=${pageNumber}&perPage=${perPage}`);
   const data = await response.json();
-  console.log(data)
   loading = false;
   return data;
 }
@@ -17,6 +16,8 @@ function displayNews(news) {
     const newsItem = document.createElement('div');
     newsItem.classList.add('news-item');
 
+    const titleLink = document.createElement('a');
+    titleLink.href = `http://127.0.0.1:8000/news/${item.id}/`;
     titleLink.textContent = item.title;
     const title = document.createElement('h2');
     title.appendChild(titleLink);

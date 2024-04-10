@@ -10,13 +10,6 @@ class NewsListCreateAPIView(ListCreateAPIView):
     queryset = News.objects.all()
     serializer_class = NewsListCreateSerializer
 
-    @action(detail=True, methods=['POST'])
-    def toggle_like(self, request, pk=None):
-        news = self.get_object()
-        news.likes_count+=1
-        data = {'likes_count':news.likes_count}
-        return JsonResponse(data,safe = False)
-
 class NewsRetrieveDestroyAPIView(RetrieveDestroyAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer

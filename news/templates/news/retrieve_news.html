@@ -16,6 +16,7 @@
         {% for tag in news.tags.all %}
         <span>{{ tag }} </span>
         {% endfor %}
+        <p>Просмотры: {{ news.views }}</p>
     </div>
 </div>
 </body>

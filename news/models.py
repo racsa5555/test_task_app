@@ -3,7 +3,6 @@ from django.db import models
 
 
 class Tag(models.Model):
-
     name = models.CharField(max_length=50)
 
     class Meta:
@@ -22,6 +21,7 @@ class News(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     likes_count = models.PositiveIntegerField(default = 0)
     dislikes_count = models.PositiveIntegerField(default = 0)
+    views = models.PositiveIntegerField(default = 0)
     
     class Meta:
         verbose_name = 'Новость'

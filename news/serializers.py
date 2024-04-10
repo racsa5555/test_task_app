@@ -4,7 +4,8 @@ from .models import News
 
 class NewsListCreateSerializer(serializers.ModelSerializer):
     tags = serializers.SerializerMethodField()
-
+    views = serializers.ReadOnlyField()
+    
     def get_tags(self,obj):
         data = []
         for x in obj.tags.all():
@@ -16,7 +17,7 @@ class NewsListCreateSerializer(serializers.ModelSerializer):
         exclude = ['likes_count','dislikes_count']
 
 class NewsSerializer(NewsListCreateSerializer):
-
+    
     class Meta:
         fields = '__all__'
         model = News

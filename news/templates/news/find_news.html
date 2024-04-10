@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find News</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link type="text/css" href="{% static 'news/css/news.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <form action="http://127.0.0.1:8000/news/find_news/" method="GET">
+        <input type="text" name="query" placeholder="Введите тег">
+        <button type="submit">Найти</button>
+    </form>
+    <div id = "news-container">
+    </div>
+    <script src="{% static 'news/js/find_news.js' %}"></script>
+</body>
+</html>
