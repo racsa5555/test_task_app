@@ -12,7 +12,7 @@ class Tag(models.Model):
 
     
     def __str__(self):
-        return f'{self.name} -> {self.id}'
+        return f'{self.name}'
 
 class News(models.Model):
     title = models.CharField(max_length = 100)
@@ -21,7 +21,8 @@ class News(models.Model):
     tags = models.ManyToManyField(Tag)
     created_at = models.DateTimeField(auto_now_add = True)
     likes_count = models.PositiveIntegerField(default = 0)
-
+    dislikes_count = models.PositiveIntegerField(default = 0)
+    
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'

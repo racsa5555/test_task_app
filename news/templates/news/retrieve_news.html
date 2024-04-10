@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve News</title>
+    <link rel="stylesheet" href="{% static 'news/css/retrieve_news.css' %}">
+</head>
+<body>
+<div class = "news-item">
+    <h1>{{ news.title }}</h1>
+    <img src="http://127.0.0.1:8000/media/{{ news.image }}">
+    <p>{{ news.text }}</p>
+    <div class = "tags">
+        {% for tag in news.tags.all %}
+        <span>{{ tag }} </span>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

@@ -1,116 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>News</title>
-<style>
-  .news-item {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    height: 300px;
-    width: 70%;
-    background-color: antiquewhite;
-    border-radius: 15px;
-    text-align: center;
-
-  }
-  .news-item img {
-    max-width: 100%;
-    height: 40%;
-    margin-bottom: 10px;
-  }
-  .tags {
-    text-align: center;
-  }
-  .tags span {
-    margin-right: 5px;
-    background-color: #ccc;
-    padding: 2px 5px;
-    border-radius: 3px;
-  }
-  body {
-    text-align: center;
-    background-color: grey;
-  }
-  h2 {
-    text-align: center;
-  }
-  #news-container {
-    display: flex;
-    justify-content: center;
-  }
-
-
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link type="text/css" href="{% static 'news/css/news.css' %}" rel="stylesheet" />
 </head>
 <body>
 <div id="news-container">
-</div>
-
-<script>
     
-  let pageNumber = 1;
-  const perPage = 3;
-  let loading = false;
-
-  async function loadNews() {
-    loading = true;
-    const response = await fetch(`http://127.0.0.1:8000/news/load_more/?page=${pageNumber}&perPage=${perPage}`);
-    const data = await response.json();
-    loading = false;
-    return data;
-  }
-
-  function displayNews(news) {
-    const newsContainer = document.getElementById('news-container');
-    news.forEach(item => {
-      const newsItem = document.createElement('div');
-      newsItem.classList.add('news-item');
-
-      const title = document.createElement('h2');
-      title.textContent = item.title;
-
-      const text = document.createElement('p');
-      text.textContent = item.text;
-
-      const image = document.createElement('img');
-      image.src = "http://127.0.0.1:8000/media/" + item.image_url;
-      console.log(item)
-      image.alt = item.title;
-
-      const tags = document.createElement('div');
-      tags.classList.add('tags');
-      item.tags.forEach(tag => {
-        const tagElement = document.createElement('span');
-        tagElement.textContent = tag.name;
-        tags.appendChild(tagElement);
-      });
-
-      newsItem.appendChild(title);
-      newsItem.appendChild(text);
-      newsItem.appendChild(image);
-      newsItem.appendChild(tags);
-
-      newsContainer.appendChild(newsItem);
-    });
-  }
-
-  window.addEventListener('scroll', async () => {
-    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-    if (scrollTop + clientHeight >= scrollHeight - 5 && !loading) {
-      pageNumber++;
-      const news = await loadNews();
-      displayNews(news);
-    }
-  });
-
-  window.onload = async () => {
-    const news = await loadNews();
-    displayNews(news);
-  };
-</script>
+</div>
+<script src="{% static 'news/js/main.js' %}"></script>
 
 </body>
 </html>
