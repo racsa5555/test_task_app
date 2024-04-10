@@ -38,7 +38,9 @@ DB_PASS=...
 `python3 manage.py makemigrations`
 `python3 maange.py migrate`
 
+### 8. Создание администратора
+`python3 manage.py createsuperuser`
 
-### 8. Запустите Сервер
+### 9. Запустите Сервер
 `python3 manage.py runserver`
 
